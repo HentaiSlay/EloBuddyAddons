@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +31,6 @@ namespace UnsignedRenekton
         {
             Combo,
             LaneClear,
-            JungleClear,
             Harass
         }
 
@@ -244,38 +243,6 @@ namespace UnsignedRenekton
             }
         }
        
-        public static void JungleClear()
-        {
-            bool QCheck = Program.JungleClear["LCQ"].Cast<CheckBox>().CurrentValue;
-            bool ECheck = Program.JungleClear["LCE"].Cast<CheckBox>().CurrentValue;
-            bool SaveFury = Program.JungleClear["LCSF"].Cast<CheckBox>().CurrentValue;
-            bool QReady = Program.Q.IsReady();
-            bool EReady = Program.E.IsReady();
-            List<Obj_AI_Base> enemies = EntityManager.MinionsAndMonsters.Monsters.ToList().ToObj_AI_BaseList();
-
-            if (Program.JungleClear["LCI"].Cast<CheckBox>().CurrentValue)
-                UseItems(Mode.Harass);
-
-            if (!SaveFury || (SaveFury && Renekton.Mana < 50))
-            {
-                if (QReady && QCheck)
-                {
-                        Program.Q.Cast(enemies, false);
-                }
-                if (EReady && ECheck)
-                {
-                    if (Program.E.Name == "RenektonSliceAndDice")
-                    {
-                            Program.E.Cast(enemies, false);
-                    }
-                    if (Program.E.Name == "RenektonDice")
-                    {
-                            Program.E.Cast(enemies, false);
-                    }
-                }
-            }
-        }
-        
         public static void Harrass()
         {
             bool QCheck = Program.Harass["HQ"].Cast<CheckBox>().CurrentValue;
