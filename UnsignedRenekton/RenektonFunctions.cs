@@ -381,14 +381,14 @@ namespace UnsignedRenekton
                     //Vector2 dashPos = Renekton.ServerPosition.Extend(comboEnemy, Program.E.Range * Program.Random.NextFloat(0, 0.05f));
                     Program.E.Cast(beginningComboPosition);
                 }
-                if (WReady && !Renekton.HasBuffOfType(BuffType.Blind))
+                if (QReady && comboEnemy.Distance(Renekton) <= Program.QRange)
+                {
+                    Program.Q.Cast();
+                }
+                else if (WReady && !Renekton.HasBuffOfType(BuffType.Blind))
                 {
                     Program.W.Cast();
                     Orbwalker.ForcedTarget = comboEnemy;
-                }
-                else if (QReady && comboEnemy.Distance(Renekton) <= Program.QRange)
-                {
-                    Program.Q.Cast();
                 }
                 else if (Program.E.Name == "RenektonDice" && EReady && !WReady && Renekton.CanMove)
                 {
@@ -398,7 +398,6 @@ namespace UnsignedRenekton
                     beginningComboPosition = Vector3.Zero;
                     comboEnemy = null;
                 }
-
                 if (comboEnemy == null || comboEnemy.IsDead || comboEnemy.IsInvulnerable || comboEnemy.Distance(Renekton) >= Program.E.Range)
                 {
                     beginningComboPosition = Vector3.Zero;
