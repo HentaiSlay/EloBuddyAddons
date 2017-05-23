@@ -506,7 +506,7 @@ namespace UnsignedRenekton
                                 Renekton.HasBuffOfType(BuffType.Slow))
                                 item.Cast();
                     }
-                    if (mode == Mode.LaneClear)
+                    if (mode == Mode.LaneClear || mode == Mode.JungleClear)
                     {
                         if (item.Id == ItemId.Ravenous_Hydra_Melee_Only || item.Id == ItemId.Tiamat_Melee_Only)
                             if (GetEnemy(390, GameObjectType.obj_AI_Minion) != null)
