@@ -28,7 +28,7 @@ namespace UnsignedRenekton
                 -10 + (20 * Program.Q.Level) + (1.5f * Renekton.TotalAttackDamage));
 
             if (Renekton.Mana >= 50)
-                wdmg = wdmg * 1.5f;
+                wdmg = (wdmg + (.75f * Renekton.TotalAttackDamage)) * 1.5f;
 
             return wdmg;
         }
@@ -36,7 +36,7 @@ namespace UnsignedRenekton
         public static float Slice(Obj_AI_Base target)
         {
             return Renekton.CalculateDamageOnUnit(target, DamageType.Physical,
-                (30 * Program.E.Level) + (0.8f * (Renekton.TotalAttackDamage - Renekton.BaseAttackDamage)));
+                (30 * Program.E.Level) + (0.9f * (Renekton.TotalAttackDamage - Renekton.BaseAttackDamage)));
         }
         public static float Dice(Obj_AI_Base target)
         {
