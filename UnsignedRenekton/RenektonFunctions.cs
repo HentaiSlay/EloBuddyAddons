@@ -456,7 +456,7 @@ namespace UnsignedRenekton
                     if (mode == Mode.Combo || mode == Mode.Harass)
                     {
                         if (item.Id == ItemId.Ravenous_Hydra_Melee_Only || item.Id == ItemId.Tiamat_Melee_Only)
-                            if (GetEnemy(400, GameObjectType.AIHeroClient) != null)
+                            if (GetEnemy(390, GameObjectType.AIHeroClient) != null)
                                 item.Cast();
                         if (item.Id == ItemId.Youmuus_Ghostblade)
                             if (GetEnemy(Program.EmpERange, GameObjectType.AIHeroClient) != null)
@@ -477,7 +477,7 @@ namespace UnsignedRenekton
                     if (mode == Mode.LaneClear)
                     {
                         if (item.Id == ItemId.Ravenous_Hydra_Melee_Only || item.Id == ItemId.Tiamat_Melee_Only)
-                            if (GetEnemy(400, GameObjectType.obj_AI_Minion) != null)
+                            if (GetEnemy(390, GameObjectType.obj_AI_Minion) != null)
                                 item.Cast();
                         if ((int)item.Id == 3053)//ItemId.TitanicHydra)
                             if (GetEnemy(Renekton.GetAutoAttackRange(), GameObjectType.obj_AI_Minion) != null && Renekton.CanAttack)
