@@ -12,7 +12,7 @@ namespace UnsignedRenekton
     internal class Program
     {
         public static readonly Random Random = new Random(DateTime.Now.Millisecond);
-        public static Menu ComboMenu, DrawingsMenu, LaneClear, JungleClear, LastHit, Killsteal, Harass, menu;
+        public static Menu ComboMenu, DrawingsMenu, LaneClear, LastHit, Killsteal, Harass, menu;
         public static Spell.Active Q;
         public static Spell.Active W;
         public static Spell.Skillshot E = new Spell.Skillshot(SpellSlot.E, 450, SkillShotType.Linear);
@@ -53,13 +53,6 @@ namespace UnsignedRenekton
             LaneClear.Add("LCQ", new CheckBox("Use Q"));
             LaneClear.Add("LCE", new CheckBox("Use E"));
             LaneClear.Add("LCI", new CheckBox("Use Items"));
-
-            JungleClear = menu.AddSubMenu("Jungle Clear", "jungleclear");
-            JungleClear.AddGroupLabel("Jungle Clear Settings");
-            JungleClear.Add("LCSF", new CheckBox("Save Fury"));
-            JungleClear.Add("LCQ", new CheckBox("Use Q"));
-            JungleClear.Add("LCE", new CheckBox("Use E"));
-            JungleClear.Add("LCI", new CheckBox("Use Items"));
 
             Harass = menu.AddSubMenu("Harass", "harass");
             Harass.AddGroupLabel("Harass Settings");
@@ -132,7 +125,6 @@ namespace UnsignedRenekton
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear) ||
                 Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear))
                 RenektonFunctions.LaneClear();
-		RenektonFunctions.JungleClearClear();
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee))
                 RenektonFunctions.Flee();
             if (Killsteal["KSER"].Cast<CheckBox>().CurrentValue)
