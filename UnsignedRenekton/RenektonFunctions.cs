@@ -31,7 +31,6 @@ namespace UnsignedRenekton
         {
             Combo,
             LaneClear,
-            JungleClear,
             Harass
         }
 
@@ -243,38 +242,6 @@ namespace UnsignedRenekton
                 }
             }
         }
-       
-        public static void JungleClear()
-         {
-             List<Obj_AI_Base> enemies = EntityManager.MinionsAndMonsters.Monsters.ToList().ToObj_AI_BaseList();
-             bool QCheck = Program.JungleClear["LCQ"].Cast<CheckBox>().CurrentValue;
-             bool ECheck = Program.JungleClear["LCE"].Cast<CheckBox>().CurrentValue;
-             bool SaveFury = Program.JungleClear["LCSF"].Cast<CheckBox>().CurrentValue;
-             bool QReady = Program.Q.IsReady();
-             bool EReady = Program.E.IsReady();
- 
-             if (Program.JungleClear["LCI"].Cast<CheckBox>().CurrentValue)
-                 UseItems(Mode.Harass);
- 
-             if (!SaveFury || (SaveFury && Renekton.Mana < 50))
-             {
-                 if (QReady && QCheck)
-                 {
-                         Program.Q.Cast(enemies);
-                 }
-                 if (EReady && ECheck)
-                 {
-                     if (Program.E.Name == "RenektonSliceAndDice")
-                     {
-                             Program.E.Cast(enemies);
-                     }
-                     if (Program.E.Name == "RenektonDice")
-                     {
-                             Program.E.Cast(enemies);
-                     }
-                 }
-             }
-         }
         
         public static void Harrass()
         {
@@ -506,7 +473,7 @@ namespace UnsignedRenekton
                                 Renekton.HasBuffOfType(BuffType.Slow))
                                 item.Cast();
                     }
-                    if (mode == Mode.LaneClear || mode == Mode.JungleClear)
+                    if (mode == Mode.LaneClear)
                     {
                         if (item.Id == ItemId.Ravenous_Hydra_Melee_Only || item.Id == ItemId.Tiamat_Melee_Only)
                             if (GetEnemy(390, GameObjectType.obj_AI_Minion) != null)
